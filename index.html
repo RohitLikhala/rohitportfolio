@@ -1,135 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UI & UX Designer Profile</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            background-color: #0f0f1b;
-            color: #f8f9fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rohit Likhala Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Base styling */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #233e54 70%, #195bb3 100%);
+      color: white;
+      overflow-x: hidden;
+    }
+    a {
+      color: #ff7f50;
+      text-decoration: none;
+    }
 
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #ff4d6d;
-        }
+    /* Video background */
+    .bg-video {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.4;
+      pointer-events: none;
+    }
 
-        .section-title {
-            color: #ff4d6d;
-            border-bottom: 2px solid #ff4d6d;
-            display: inline-block;
-            margin-bottom: 1rem;
-          
-        }
+    /* Container styling */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 20px 50px 20px;
+    }
 
-        .icon-box i {
-            font-size: 2rem;
-            color: #ff4d6d;
-        }
+    /* Hero section */
+    header {
+      text-align: center;
+      margin-bottom: 80px;
+      position: relative;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+    header p {
+      font-size: 1.25rem;
+      font-weight: 400;
+      max-width: 600px;
+      margin: 0 auto;
+      margin-bottom: 25px;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    }
+    header img {
+      width: 250px;
+      height: 250px;
+      border-radius: 20px;
+      box-shadow: 0 0 80px #2b7cff60;
+      object-fit: cover;
+      margin-bottom: 25px;
+    }
 
-        .icon-box span {
-            display: block;
-            color: #f8f9fa;
-            margin-top: 0.5rem;
-        }
+    /* Geometric SVG style */
+    .geo-svg {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      stroke: #ff7f50;
+      stroke-width: 2;
+      fill: transparent;
+      animation: rotateSmooth 10s linear infinite;
+    }
+    .geo-top-left {
+      top: 30px;
+      left: 30px;
+    }
+    .geo-bottom-right {
+      bottom: 30px;
+      right: 30px;
+      animation-direction: reverse;
+    }
+    @keyframes rotateSmooth {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
 
-        .contact-links a {
-            color: #ffb347;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
+    /* Section headings */
+    section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      color: #ff7f50;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+    }
 
-        .bg-poppy {
-            background-color: #1a1a2e;
-            border-radius: 1rem;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-    </style>
+    /* Tiles grid */
+    .tiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+    .tile {
+      background: rgba(255,127,80,0.15);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 0 30px #ff7f50aa;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .tile:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 0 60px #ff7f50cc;
+    }
+    .tile img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 12px;
+      box-shadow: 0 0 25px #ff7f50aa;
+    }
+    .tile h3 {
+      margin: 0 0 8px 0;
+      font-weight: 700;
+      color: white;
+    }
+    .tile p {
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: #ddd;
+    }
+
+    /* Contact & Resume */
+    .contact-section {
+      text-align: center;
+      margin: 80px 0 40px 0;
+    }
+    .contact-section a.download-btn {
+      display: inline-block;
+      background: #ff7f50;
+      color: white;
+      padding: 15px 35px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 0 40px #ff7f50cc;
+      transition: background 0.3s ease;
+    }
+    .contact-section a.download-btn:hover {
+      background: #ff975b;
+      box-shadow: 0 0 55px #ff975bcc;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 20px;
+      text-align: center;
+      color: #aaa;
+      font-size: 0.8rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header img {
+        width: 180px;
+        height: 180px;
+      }
+      section h2 {
+        font-size: 1.5rem;
+      }
+    }
+    
+  </style>
 </head>
-
 <body>
-    <div class="container py-5">
-        <div class="text-center mb-5">
-            <img src="https://via.placeholder.com/150" alt="Profile Image" class="profile-img">
-            <h2 class="mt-3">Francesco Vittorioso</h2>
-            <h5 class="text-muted">UI & UX Designer</h5>
-        </div>
 
-        <div class="row bg-poppy">
-            <div class="col-md-6">
-                <h4 class="section-title">About Me</h4>
-                <ul class="list-unstyled">
-                    <li><i class="fas fa-birthday-cake me-2"></i> 27/09/1992 - Benevento</li>
-                    <li><i class="fas fa-map-marker-alt me-2"></i> Via Cesare Battisti 4, Benevento</li>
-                    <li><i class="fas fa-language me-2"></i> Languages: Italian (Native), English (Basic)</li>
-                    <li><i class="fas fa-paint-brush me-2"></i> Hobbies: Painting & Sport</li>
-                </ul>
-            </div>
-            <div class="col-md-6 contact-links">
-                <h4 class="section-title">Contact</h4>
-                <a href="#"><i class="fas fa-globe"></i> behance.net/francescovittorioso</a>
-                <a href="#"><i class="fas fa-envelope"></i> vittoriosof@gmail.com</a>
-                <a href="#"><i class="fas fa-phone"></i> +39-045620792</a>
-                <a href="#"><i class="fab fa-facebook"></i> facebook.com/francescovittorioso</a>
-                <a href="#"><i class="fab fa-twitter"></i> twitter.com/francescovis</a>
-            </div>
-        </div>
+  <video class="bg-video" autoplay loop muted playsinline>
+    <source src="https://cdn.videvo.net/videvo_files/video/free/2017-09/small_watermarked/170816_128_Waves_01_preview.webm" type="video/webm" />
+    <source src="https://cdn.videvo.net/videvo_files/video/free/2017-09/small_watermarked/170816_128_Waves_01_preview.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support the video tag.
+  </video>
 
-        <div class="bg-poppy">
-            <h4 class="section-title">Skills</h4>
-            <div class="row text-center">
-                <div class="col-4 col-md-2 icon-box">
-                    <i class="fab fa-adobe"></i><span>Photoshop</span>
-                </div>
-                <div class="col-4 col-md-2 icon-box">
-                    <i class="fab fa-adobe"></i><span>Illustrator</span>
-                </div>
-                <div class="col-4 col-md-2 icon-box">
-                    <i class="fab fa-adobe"></i><span>InDesign</span>
-                </div>
-                <div class="col-4 col-md-2 icon-box">
-                    <i class="fab fa-windows"></i><span>Windows</span>
-                </div>
-                <div class="col-4 col-md-2 icon-box">
-                    <i class="fab fa-apple"></i><span>Apple</span>
-                </div>
-                <div class="col-4 col-md-2 icon-box">
-                    <i class="fas fa-palette"></i><span>Painting</span>
-                </div>
-            </div>
-        </div>
+  <header>
+    <!-- Replace src with your photo later -->
+    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=250&q=80" alt="Rohit Likhala" />
+    <h1>Rohit Likhala | Graphic & UI Designer</h1>
+    <p>Energetic, cinematic design with funky geometric accents and modern aesthetics.</p>
 
-        <div class="row bg-poppy">
-            <div class="col-md-6">
-                <h4 class="section-title">Work Experience</h4>
-                <ul>
-                    <li><strong>Stage Graphic Designer</strong> - Tabularasa Events</li>
-                    <li><strong>Stage Graphic Designer</strong> - Gabriella Tafuto Freelancer</li>
-                    <li><strong>Photo Reportage</strong> - Pescatore Design Furnishing</li>
-                </ul>
-            </div>
-            <div class="col-md-6">
-                <h4 class="section-title">Best Works of 2014</h4>
-                <ul>
-                    <li><strong>Personal Branding</strong> - "FV" project</li>
-                    <li><strong>Dante Alighieri Monogram</strong> - School Project</li>
-                    <li><strong>Poster I Legambient & Skaraball</strong> - XII Sport School Awards</li>
-                    <li><strong>Logo for 11:59 AM</strong> - Tabularasa Events</li>
-                    <li><strong>Brochure Selections</strong> - Nuova Ottica Balestrieri</li>
-                </ul>
-            </div>
+    <!-- Geometric SVGs -->
+    <svg class="geo-svg geo-top-left" viewBox="0 0 100 100" >
+      <polygon points="50,10 90,75 10,75" />
+    </svg>
+    <svg class="geo-svg geo-bottom-right" viewBox="0 0 100 100" >
+      <circle cx="50" cy="50" r="40" />
+    </svg>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Latest Projects & Collaborations</h2>
+      <div class="tiles">
+        <div class="tile">
+          <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=400&q=80" alt="Project 1" />
+          <h3>Project One</h3>
+          <p>A creative UI project focused on modern design.</p>
         </div>
-    </div>
+        <div class="tile">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80" alt="Project 2" />
+          <h3>Project Two</h3>
+          <p>Branding and graphic design for startups and entrepreneurs.</p>
+        </div>
+        <div class="tile">
+          <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=400&q=80" alt="Project 3" />
+          <h3>Project Three</h3>
+          <p>Collaborative user experience and UI enhancements.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Testimonials</h2>
+      <div class="tiles">
+        <div class="tile">
+          <p>"Rohit’s design thinking elevated our brand’s identity beyond our expectations."</p>
+          <strong>- Client A</strong>
+        </div>
+        <div class="tile">
+          <p>"An innovative designer with an eye for detail and user experience."</p>
+          <strong>- Client B</strong>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Video Intros</h2>
+      <div class="tiles">
+        <div class="tile">
+          <video controls width="100%" style="border-radius: 15px; box-shadow: 0 0 20px #ff7f50aa;">
+            <source src="https://cdn.videvo.net/videvo_files/video/free/2019-12/small_watermarked/191123_07_Yellow_Intro_01_preview.webm" type="video/webm" />
+            <source src="https://cdn.videvo.net/videvo_files/video/free/2019-12/small_watermarked/191123_07_Yellow_Intro_01_preview.mp4" type="video/mp4" />
+            Your browser does not support HTML video.
+          </video>
+          <h3>Intro Video</h3>
+          <p>A quick intro showcasing design philosophy.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <h2>Contact & Resume</h2>
+      <a href="ROHIT_LIKHALA_RESUME.pdf" download class="download-btn">Download Resume</a>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Rohit Likhala. Designed with passion.
+  </footer>
+
 </body>
-
 </html>
